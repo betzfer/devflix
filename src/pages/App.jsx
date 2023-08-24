@@ -1,9 +1,12 @@
 import { useEffect } from "react";
+import { useState } from "react";
+
 import logo from "../assets/devflix.png";
 import searchIcon from "../assets/search.svg";
-import MovieCard from "../componentes/movieCard/movieCard";
+
 import "./App.css";
-import { useState } from "react";
+import MovieCard from "../componentes/movieCard/movieCard";
+import Footer from "../componentes/footer/footer";
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +15,7 @@ const App = () => {
   const apiUrl = `https://omdbapi.com/?apikey=${apiKey}`;
 
   useEffect(() => {
-    searchMovies("Digimon");
+    searchMovies("Batman");
   }, []);
 
   const searchMovies = async (title) => {
@@ -26,10 +29,6 @@ const App = () => {
     e === "Enter" && searchMovies(searchTerm);
     searchMovies(searchTerm);
   };
-
-  //fetch(apiUrl)
-  // .then((Response) => Response.json())
-  // .then((data) => console.log(data));
 
   return (
     <div id="app">
@@ -60,6 +59,7 @@ const App = () => {
           <h2>Nenhum filme encontrado 😏</h2>
         </div>
       )}
+      <Footer link={"https:github.com.br"}>ProfCastello</Footer>
     </div>
   );
 };
